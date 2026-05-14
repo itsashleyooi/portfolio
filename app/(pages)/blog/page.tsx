@@ -10,7 +10,7 @@ import {
   CalendarDaysIcon as DateIcon,
   ClockIcon as TimeIcon,
 } from "@heroicons/react/24/outline";
-import { allPages, allPosts } from "contentlayer/generated";
+import { allPages, allPosts } from "contentlayer2/generated";
 import { compareDesc } from "date-fns";
 import { Metadata } from "next";
 import Image from "next/image";

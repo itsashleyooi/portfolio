@@ -2,14 +2,43 @@ import {
   defineDocumentType,
   defineNestedType,
   makeSource,
-} from "contentlayer/source-files";
+} from "contentlayer2/source-files";
 import readingTime from "reading-time";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+import { visit } from "unist-util-visit";
 
-/** @type {import('contentlayer/source-files').ComputedFields} */
+// Converts string `style` attributes (emitted by shiki via rehype-pretty-code)
+// into object form so MDX 3's strict JSX parser can serialize them.
+function rehypeStyleStringToObject() {
+  return (tree) => {
+    visit(tree, "element", (node) => {
+      if (
+        node.properties &&
+        typeof node.properties.style === "string" &&
+        node.properties.style.length > 0
+      ) {
+        const styleObj = {};
+        for (const decl of node.properties.style.split(";")) {
+          const idx = decl.indexOf(":");
+          if (idx === -1) continue;
+          const key = decl.slice(0, idx).trim();
+          const value = decl.slice(idx + 1).trim();
+          if (!key || !value) continue;
+          const propKey = key.startsWith("--")
+            ? key
+            : key.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+          styleObj[propKey] = value;
+        }
+        node.properties.style = styleObj;
+      }
+    });
+  };
+}
+
+/** @type {import('contentlayer2/source-files').ComputedFields} */
 const computedFields = {
   readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
@@ -215,21 +244,9 @@ export default makeSource({
         rehypePrettyCode,
         {
           theme: "github-dark",
-          onVisitLine(node) {
-            // Prevent lines from collapsing in `display: grid` mode, and allow empty
-            // lines to be copy/pasted
-            if (node.children.length === 0) {
-              node.children = [{ type: "text", value: " " }];
-            }
-          },
-          onVisitHighlightedLine(node) {
-            node.properties.className.push("line--highlighted");
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ["word--highlighted"];
-          },
         },
       ],
+      rehypeStyleStringToObject,
       [
         rehypeAutolinkHeadings,
         {

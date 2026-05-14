@@ -1,7 +1,7 @@
 import Mdx from "@/components/ui/mdx";
 import metaData from "@/config/meta";
 import { constructOgImageUri, getUrl } from "@/lib/utils";
-import { allPages } from "contentlayer/generated";
+import { allPages } from "contentlayer2/generated";
 import { Metadata } from "next";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
