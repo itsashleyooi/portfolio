@@ -3,7 +3,7 @@ import {
   defineDocumentType,
   defineNestedType,
   makeSource
-} from "contentlayer/source-files";
+} from "contentlayer2/source-files";
 import readingTime from "reading-time";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -240,4 +240,4 @@ export {
   Social,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-IXHTCUSN.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-F43X2QDA.mjs.map

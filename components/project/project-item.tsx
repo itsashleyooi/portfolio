@@ -10,7 +10,7 @@ import {
   ProjectLine,
   ProjectScreenShot,
 } from "./sub-components"
-import { Project } from "contentlayer/generated"
+import { Project } from "contentlayer2/generated"
 import {v4} from "uuid"
 
 interface ProjectProps {

@@ -2,7 +2,7 @@ import { ContactForm } from "@/components/contact";
 import metaData from "@/config/meta";
 import { EmailIcon, GithubIcon, LinkedInIcon } from "@/icons";
 import { cn, constructOgImageUri, getUrl } from "@/lib/utils";
-import { allPages, allSocials } from "contentlayer/generated";
+import { allPages, allSocials } from "contentlayer2/generated";
 import { Metadata } from "next";
 import Balancer from "react-wrap-balancer";
 import { v4 } from "uuid";

@@ -1,7 +1,7 @@
 import BackButton from "@/components/ui/back-button";
 import Mdx from "@/components/ui/mdx";
 import { constructOgImageUri, getUrl } from "@/lib/utils";
-import { allPosts } from "contentlayer/generated";
+import { allPosts } from "contentlayer2/generated";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";

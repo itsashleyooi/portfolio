@@ -7,7 +7,7 @@ import {
 } from "@/components/main";
 import { Project } from "@/components/project";
 import { shimmer, toBase64 } from "@/lib/utils";
-import { allPages, allProjects } from "contentlayer/generated";
+import { allPages, allProjects } from "contentlayer2/generated";
 import { compareDesc } from "date-fns";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";

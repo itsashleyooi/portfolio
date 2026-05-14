@@ -1,7 +1,7 @@
 import { FC } from "react"
 import Image, { ImageProps } from "next/image"
 import { cn } from "@/lib/utils"
-import { useMDXComponent } from "next-contentlayer/hooks"
+import { useMDXComponent } from "next-contentlayer2/hooks"
 
 type Props = {
   className?: string
