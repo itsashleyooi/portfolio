@@ -10,11 +10,11 @@ import {
   ProjectLine,
   ProjectScreenShot,
 } from "./sub-components"
-import { Project } from "contentlayer2/generated"
+import type { Project as ProjectDoc } from "contentlayer2/generated"
 import {v4} from "uuid"
 
 interface ProjectProps {
-  project: Project,
+  project: ProjectDoc,
   line: boolean
 }
 
